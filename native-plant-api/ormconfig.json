@@ -2,7 +2,7 @@
   "type": "postgres",
   "host": "localhost",
   "port": 5432,
-  "username": "postgres",
+  "username": "plants_admin",
   "password": "%Fdsa5pos",
   "database": "plants",
   "logging": true,

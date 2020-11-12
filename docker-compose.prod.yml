@@ -1,0 +1,38 @@
+version: "3.6"
+services:
+  api:
+    container_name: api
+    restart: always
+    build: ./native-plant-api
+
+    # this is where we host the development platform image
+    image: plant_api
+    volumes:
+      # mount the docker daemon socket so that we can run docker commands inside
+      # the container
+      # - /var/run/docker.sock:/var/run/docker.sock
+
+      # mount your SSH keys and git config
+      - $HOME/.ssh:/root/.ssh
+      - $HOME/.gitconfig:/root/.gitconfig
+
+      # so they persist across container restarts
+      - ./api:/plant-finder
+
+    # this is the `null` command; it keeps the container alive so you can "bash in"
+    # from other terminals
+    # command: "tail -f /dev/null"
+    # command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+
+    # we want to connect a lot of ports from the container to your local machine
+    # for arbitrary use in the future
+    ports:
+      - "3001:3001"
+  client:
+    container_name: client
+    restart: always
+    build: ./native-plant-client
+    ports:
+      - "3000:3000"
+    links:
+      - "api"

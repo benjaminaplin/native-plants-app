@@ -6,9 +6,6 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=%Fdsa5pos
-      - HOST=localhost
-      - POSTGRES_USERNAME=postgres
-      - PORT=5432,
     ports:
       - "5432:5432"
   api:
@@ -39,7 +36,7 @@ services:
     # for arbitrary use in the future
     ports:
       - "3001:3001"
-    depends_on:
+    links:
       - db
   client:
     container_name: client

@@ -3,15 +3,15 @@ import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConne
 enum DB_TYPE {
   postgres = "postgres",
 }
-
+console.log('process.env.POSTGRES_PASSWORD', process.env.POSTGRES_PASSWORD)
 function getOrmConfig(): PostgresConnectionOptions {
   const dbConfig = {
     type: DB_TYPE.postgres,
-    host: "localhost",
+    host: 'localhost',
     port: 5432,
-    username: "postgres",
-    password: "%Fdsa5pos",
-    database: "plants",
+    username: 'postgres',
+    password: '%Fdsa5pos',
+    database: 'postgres',
     logging: true,
     cli: {
       entitiesDir: "src/entities",
