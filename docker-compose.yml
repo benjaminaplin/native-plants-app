@@ -5,7 +5,7 @@ services:
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=%Fdsa5pos
+      - POSTGRES_PASSWORD=%*****pos
     ports:
       - "5432:5432"
   api:
